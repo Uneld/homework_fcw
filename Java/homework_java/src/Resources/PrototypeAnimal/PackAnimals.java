@@ -1,13 +1,11 @@
 package Resources.PrototypeAnimal;
 
-import Resources.PrototypeAnimal.Animals;
-
-import java.util.Date;
+import java.time.LocalDate;
 
 public abstract class PackAnimals extends Animals {
     int loadCapacity;
 
-    public PackAnimals(String name, Date birthData, int loadCapacity) {
+    public PackAnimals(String name, LocalDate birthData, int loadCapacity) {
         super(name, birthData);
         this.loadCapacity = loadCapacity;
     }

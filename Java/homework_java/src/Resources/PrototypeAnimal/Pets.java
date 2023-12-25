@@ -1,13 +1,11 @@
 package Resources.PrototypeAnimal;
 
-import Resources.PrototypeAnimal.Animals;
-
-import java.util.Date;
+import java.time.LocalDate;
 
 public abstract class Pets extends Animals {
     String breed;
 
-    public Pets(String name, Date birthData, String breed) {
+    public Pets(String name, LocalDate birthData, String breed) {
         super(name, birthData);
         this.breed = breed;
     }

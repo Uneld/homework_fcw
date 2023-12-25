@@ -1,13 +1,12 @@
 package Resources.PrototypeAnimal;
 
-import Exceptions.ExceptionNoCommand;
+import Exceptions.NoCommandException;
 import Interfaces.InterfaceCommands;
 import Resources.Command;
 
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public abstract class Animals implements InterfaceCommands {
@@ -48,9 +47,9 @@ public abstract class Animals implements InterfaceCommands {
     }
 
     @Override
-    public String performCommand(Command command) throws ExceptionNoCommand {
+    public String performCommand(Command command) throws NoCommandException {
         if (!commands.contains(command)) {
-            throw new ExceptionNoCommand(name, command);
+            throw new NoCommandException(name, command);
         }
         return name + " выполнило команду " + command.getName();
     }

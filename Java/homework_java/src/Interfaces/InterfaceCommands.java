@@ -1,10 +1,10 @@
 package Interfaces;
 
-import Exceptions.ExceptionNoCommand;
+import Exceptions.NoCommandException;
 import Resources.Command;
 
 public interface InterfaceCommands {
     void trainNewCommand( Command command);
 
-    String performCommand( Command command) throws ExceptionNoCommand;
+    String performCommand( Command command) throws NoCommandException;
 }

@@ -2,11 +2,11 @@ package Exceptions;
 
 import Resources.Command;
 
-public class ExceptionNoCommand extends Exception{
+public class NoCommandException extends Exception{
     String nameAnimal;
     Command command;
 
-    public ExceptionNoCommand(String nameAnimal, Command command) {
+    public NoCommandException(String nameAnimal, Command command) {
         this.nameAnimal = nameAnimal;
         this.command = command;
     }
