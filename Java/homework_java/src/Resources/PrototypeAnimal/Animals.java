@@ -9,15 +9,16 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Animals implements InterfaceCommands {
+public abstract class Animals implements InterfaceCommands, Comparable<Animals> {
     String name = "Нет имени";
-    LocalDate birthData;
+    LocalDate birthDate;
 
     List<Command> commands;
     static int counter;
 
-    public Animals(String name, LocalDate birthData) {
-        this.birthData = birthData;
+    public Animals(String name, LocalDate birthDate) {
+        this.name = name;
+        this.birthDate = birthDate;
         commands = new ArrayList<>();
         counter++;
     }
@@ -36,7 +37,7 @@ public abstract class Animals implements InterfaceCommands {
 
     public int getAge() {
         LocalDate dateNow = LocalDate.now();
-        Period period = Period.between(dateNow, birthData);
+        Period period = Period.between(birthDate, dateNow);
 
         return period.getYears();
     }
@@ -52,5 +53,10 @@ public abstract class Animals implements InterfaceCommands {
             throw new NoCommandException(name, command);
         }
         return name + " выполнило команду " + command.getName();
+    }
+
+    @Override
+    public int compareTo(Animals o) {
+        return this.getAge() - o.getAge();
     }
 }
