@@ -1,5 +1,6 @@
 package Program;
 
+import Exceptions.AnimalExistsException;
 import Exceptions.NoTypeAnimalException;
 import Exceptions.NotFoundAnimalException;
 import Records.PackAnimalData;
@@ -17,7 +18,7 @@ public class HumanFriends implements Interfaces.HumanFriendsInterface {
     }
 
     @Override
-    public void addNewAnimals(PetsData data) throws NoTypeAnimalException {
+    public void addNewAnimals(PetsData data) throws NoTypeAnimalException, AnimalExistsException {
         Animals temp;
         switch (data.type()) {
             case CAT -> {
@@ -31,12 +32,12 @@ public class HumanFriends implements Interfaces.HumanFriendsInterface {
             }
             default -> throw new NoTypeAnimalException(data.type());
         }
-
+        checkContains(temp);
         animalsList.add(temp);
     }
 
     @Override
-    public void addNewAnimals(PackAnimalData data) throws NoTypeAnimalException {
+    public void addNewAnimals(PackAnimalData data) throws NoTypeAnimalException, AnimalExistsException {
         Animals temp;
         switch (data.type()) {
             case CAMEL -> {
@@ -50,14 +51,14 @@ public class HumanFriends implements Interfaces.HumanFriendsInterface {
             }
             default -> throw new NoTypeAnimalException(data.type());
         }
-
+        checkContains(temp);
         animalsList.add(temp);
     }
 
     @Override
     public Animals findAnimalsByName(String name) throws NotFoundAnimalException {
         for (Animals animal : animalsList) {
-            if (animal.getName().equals(name)) {
+            if (animal.getName().strip().equalsIgnoreCase(name)) {
                 return animal;
             }
         }
@@ -67,7 +68,9 @@ public class HumanFriends implements Interfaces.HumanFriendsInterface {
     @Override
     public Animals findAnimalsByNameAndAge(String name, int age) throws NotFoundAnimalException {
         for (Animals animal : animalsList) {
-            if (animal.getName().equals(name) && animal.getAge() == age) {
+            String animalName = animal.getName().strip();
+
+            if (animalName.equalsIgnoreCase(name) && animal.getAge() == age) {
                 return animal;
             }
         }
@@ -77,5 +80,16 @@ public class HumanFriends implements Interfaces.HumanFriendsInterface {
     @Override
     public List<Animals> getAllAnimalsList() {
         return animalsList;
+    }
+
+    @Override
+    public void deleteAnimal(Animals animal){
+        animalsList.remove(animal);
+    }
+
+    private void checkContains(Animals animal) throws AnimalExistsException {
+        if (animalsList.contains(animal)){
+            throw new AnimalExistsException();
+        }
     }
 }

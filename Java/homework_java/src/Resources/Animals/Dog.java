@@ -1,10 +1,9 @@
 package Resources.Animals;
 
-import Resources.Command;
+import Records.Command;
 import Resources.PrototypeAnimal.Pets;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class Dog extends Pets {
     public Dog(String name, LocalDate birthData, String breed) {

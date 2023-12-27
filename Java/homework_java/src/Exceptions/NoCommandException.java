@@ -1,6 +1,6 @@
 package Exceptions;
 
-import Resources.Command;
+import Records.Command;
 
 public class NoCommandException extends Exception{
     String nameAnimal;
@@ -13,6 +13,6 @@ public class NoCommandException extends Exception{
 
     @Override
     public String getMessage() {
-        return '\"' + nameAnimal + '\"' + " не знает команды " + command.getName();
+        return '\"' + nameAnimal + '\"' + " не знает команды " + command.name();
     }
 }

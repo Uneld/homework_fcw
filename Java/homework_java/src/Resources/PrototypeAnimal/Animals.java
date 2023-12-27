@@ -2,7 +2,7 @@ package Resources.PrototypeAnimal;
 
 import Exceptions.NoCommandException;
 import Interfaces.InterfaceCommands;
-import Resources.Command;
+import Records.Command;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -42,6 +42,10 @@ public abstract class Animals implements InterfaceCommands, Comparable<Animals> 
         return period.getYears();
     }
 
+    public List<Command> getCommands() {
+        return commands;
+    }
+
     @Override
     public void trainNewCommand(Command command) {
         commands.add(command);
@@ -52,7 +56,7 @@ public abstract class Animals implements InterfaceCommands, Comparable<Animals> 
         if (!commands.contains(command)) {
             throw new NoCommandException(name, command);
         }
-        return name + " выполнило команду " + command.getName();
+        return '"' + name + " выполнило команду " + command.name() + '"';
     }
 
     @Override

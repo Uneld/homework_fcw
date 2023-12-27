@@ -1,7 +1,7 @@
 package Interfaces;
 
 import Exceptions.NoCommandException;
-import Resources.Command;
+import Records.Command;
 
 public interface InterfaceCommands {
     void trainNewCommand( Command command);
