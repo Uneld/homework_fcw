@@ -166,6 +166,7 @@ public class Worker {
                         count++;
                         showAnimalInfo(count, animal);
                     }
+                    IOView.showMessage("Общее количество животных: " + animalsList.size());
                     IOView.showMessage("");
                     switchMainMenu = 0;
                 }
